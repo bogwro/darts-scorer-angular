@@ -1,0 +1,23 @@
+extends ../../../common/templates/base
+
+block content
+
+  .playerName {{boardVM.playerName}}
+  .roundNum round - {{boardVM.game.currentRoundNumber}}
+  .totalPoints {{boardVM.game.currentPlayerTotalPoints}}
+  .roundPoints {{boardVM.game.currentRoundPoints}}
+
+
+  button.btn(ui-sref='match.table') table view
+  button.btn(ng-click='boardVM.nextPlayer()', ng-class='{disabled: !boardVM.game.currentRound.isDone, "btn-primary": boardVM.game.currentRound.isDone}') next player
+  button.btn(ng-click='boardVM.undo()', ng-class='{disabled: !boardVM.game.currentRound.size}') Undo
+
+  .throws
+    .throw(ng-repeat='_throw in boardVM.throws') [ {{_throw.number * _throw.multiplier}} ]
+    .throw.not-done(ng-repeat='i in boardVM.range() track by $index')
+      .dart-icon [ | ]
+      .miss-btn(ng-show='$first')
+        button.btn.btn-secondary(ng-click='boardVM.miss()') |miss|
+
+
+  darts-board
