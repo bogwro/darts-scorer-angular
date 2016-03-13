@@ -2,7 +2,7 @@
 
 import './vendor/ie10-width';
 
-import './styles/styles.scss';
+import './styles/main.scss';
 
 import pagesModName from './pages';
 

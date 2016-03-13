@@ -1,23 +1,36 @@
 extends ../../../common/templates/base
 
 block content
+  .contentMatch
+    .left
+      .rowContent.playerName {{boardVM.playerName}}
+      .rowContent.pointsSet
+        .totalPoints
+          p total points
+          span {{boardVM.game.currentPlayerTotalPoints}}
+        .roundPoints
+          p this round
+          span {{boardVM.game.currentRoundPoints}}
+      .throws
+        .throw.bgScore.throwScore(ng-repeat='_throw in boardVM.throws')  {{_throw.number * _throw.multiplier}}
+        .throw.not-done(ng-repeat='i in boardVM.range() track by $index')
+          .bgScore.dart-icon
+            include ./arrow.svg
+          .bgScore.miss-btn(ng-show='$first')
+            button.btn.btn-secondary(ng-click='boardVM.miss()')
+            include ./miss.svg
+      .infoHolder(ng-if="boardVM.checkoutHints.length && boardVM.throwsLeft")
+        p {{boardVM.checkoutHints.join('-')}}
+      .infoHolder(ng-if="boardVM.game.currentPlayer.winner")
+        p WINNER
+      .buttonSet
+        //button.btn(ui-sref='match.table')
+        //  include ./list.svg
+        button.btn(ng-if="!boardVM.game.currentPlayer.winner" ng-click='boardVM.nextPlayer()', ng-class='{disabled: !boardVM.game.currentRound.isDone || boardVM.game.currentPlayer.winner, "btn-primary": boardVM.game.currentRound.isDone}')
+          include ./player.svg
+        button.btn.btn-undo(ng-click='boardVM.undo()', ng-class='{disabled: !boardVM.game.currentRound.size}')
+          include ./undo.svg
 
-  .playerName {{boardVM.playerName}}
-  .roundNum round - {{boardVM.game.currentRoundNumber}}
-  .totalPoints {{boardVM.game.currentPlayerTotalPoints}}
-  .roundPoints {{boardVM.game.currentRoundPoints}}
-
-
-  button.btn(ui-sref='match.table') table view
-  button.btn(ng-click='boardVM.nextPlayer()', ng-class='{disabled: !boardVM.game.currentRound.isDone, "btn-primary": boardVM.game.currentRound.isDone}') next player
-  button.btn(ng-click='boardVM.undo()', ng-class='{disabled: !boardVM.game.currentRound.size}') Undo
-
-  .throws
-    .throw(ng-repeat='_throw in boardVM.throws') [ {{_throw.number * _throw.multiplier}} ]
-    .throw.not-done(ng-repeat='i in boardVM.range() track by $index')
-      .dart-icon [ | ]
-      .miss-btn(ng-show='$first')
-        button.btn.btn-secondary(ng-click='boardVM.miss()') |miss|
-
-
-  darts-board
+    .dart-board
+      .roundNum round - {{boardVM.game.currentRoundNumber}}
+      darts-board

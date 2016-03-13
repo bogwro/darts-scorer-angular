@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="38px" height="46px" viewBox="0 0 38 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="game---501" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="iPad-Landscape" sketch:type="MSArtboardGroup" transform="translate(-135.000000, -690.000000)" fill="#818181">
+            <path d="M154,698.225 L154,690 L142.125,701.75 L154,713.5 L154,702.925 C161.8375,702.925 168.25,709.27 168.25,717.025 C168.25,724.78 161.8375,731.125 154,731.125 C146.1625,731.125 139.75,724.78 139.75,717.025 L135,717.025 C135,727.365 143.55,735.825 154,735.825 C164.45,735.825 173,727.365 173,717.025 C173,706.685 164.45,698.225 154,698.225 L154,698.225 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

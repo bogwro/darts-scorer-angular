@@ -1,11 +1,11 @@
-//extends ../../common/templates/base
+extends ../../common/templates/base
 
-//block content
+block content
+  .gamesWrapper
+    h1 GAMES
 
-h1 GAMES
-
-.list-group
-  button.list-group-item(ng-click='gamesCtrl.playGame(game)', ng-repeat='game in gamesCtrl.games')
-    h4.list-group-item-heading {{game.name}}
-    p.list-group-item-text
-      | Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+    .list-group
+      button.list-group-item(ng-click='gamesCtrl.playGame(game)', ng-repeat='game in gamesCtrl.games')
+        h4.list-group-item-heading {{game.name}}
+        p.list-group-item-text
+          | Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.

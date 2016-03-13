@@ -1,44 +1,208 @@
 @import "../../../styles/mixins";
 
-svg {
+.contentSettings {
+  @include flex(1);
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+}
+
+h1 {
   display: block;
-  height: 100vh !important;
-  width: 100vw;
-  margin: 0 auto !important;
-  overflow: hidden;
+  width: 100%;
+  background-color: darken(red, 10%);
+  padding: 0;
+  margin: 0;
+  line-height: 60px;
+  height: 60px;
+  color: darken(#fff, 10%);
 }
-svg text {
-  font-size: 4.4rem;
-  font-family: Verdana;
-  text-align: center;
-  cursor: pointer;
-  pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+.settingsWrapper {
+  width: 100%;
+  @include flex(1);
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
 
-svg g g:nth-child(odd) text{
-  fill: #00591E;
-}
-svg g g:nth-child(even) text{
-  fill: #B01800;
-}
-svg g g:nth-child(odd) .lower:hover,
-svg g g:nth-child(odd) .upper:hover {
-  fill: darken(#D9D9D1, 20%) !important;
-}
-svg g g:nth-child(even) .lower:hover,
-svg g g:nth-child(even) .upper:hover {
-  fill: lighten(#1E1E1E, 20%) !important;
-}
+  .leftPlayers {
+    background-color: whitesmoke;
+    @include flex(1);
+    @include display(flex);
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
 
-svg g g:nth-child(odd) .double:hover,
-svg g g:nth-child(odd) .triple:hover {
-  fill: lighten(#00591E, 20%) !important;
-}
-svg g g:nth-child(even) .double:hover,
-svg g g:nth-child(even) .triple:hover {
-  fill: lighten(#B01800, 20%) !important;
+    .listHolder {
+      @include flex(1);
+    }
+    .formHolder {
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #1a1a1a;
+      height: 100px;
+    }
+
+  }
+  .rightSettings {
+    @include flex(1);
+    @include display(flex);
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
+    background-color: #1a1a1a;
+
+    .listHolder {
+      @include flex(1);
+
+    }
+    .formHolder {
+      position: relative;
+      padding: 20px;
+      height: 100px;
+      box-sizing: border-box;
+      background-color: whitesmoke;
+    }
+
+    ///btn start
+    button {
+      outline: 0 !important;
+      -webkit-appearance:none;
+      background-color: darken(whitesmoke, 0%);
+      border: none;
+      width: 100%;
+      height: 100%;
+      line-height: 42px;
+      font-size: 4rem;
+      display: block;
+      position: absolute;
+      top:0;
+      left: 0;
+      color: lighten(#000000, 70%);
+      letter-spacing: 5px;
+
+      &:hover {
+        background-color: darken(whitesmoke, 5%);
+        color: #000;
+      }
+    }
+
+  }
+////////////////////////////////////////
+  .form-inline, .form-group {
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include align-items(center);
+    @include justify-content(flex-start);
+
+
+  }
+  .form-inline {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 5px;
+
+
+
+    .form-group {
+      width: 100%;
+      label {
+        color: #1a1a1a;
+        width: 30%;
+        display: block;
+        line-height: 40px;
+        font-size: 2rem;
+      }
+      .input-group {
+        @include calc(width, "70% - 10px");
+      }
+      input {
+        outline: 0 !important;
+        -webkit-appearance:none;
+        width: 100%;
+        height: 40px;
+        box-sizing: border-box;
+        line-height: 40px;
+        text-indent: 20px;
+        background-color: whitesmoke;
+        border: none;
+        border-bottom: 2px solid #1a1a1a;
+        color: #1a1a1a;
+        font-size: 2rem;
+      }
+
+    }
+    button {
+      outline: 0 !important;
+      -webkit-appearance:none;
+      background-color: lighten(#171717, 0%);
+      color: whitesmoke;
+      border: none;
+      width: 10%;
+      height: 42px;
+      line-height: 32px;
+      padding: 2px;
+      font-size: 3rem;
+      display: block;
+      margin-top: 0px;
+
+    }
+  }
+
+
+  //////////////////////
+  ul.list-group {
+    @include calc(width, "100% - 40px");
+    padding: 0;
+    box-sizing: border-box;
+    margin: 20px;
+    list-style: none;
+
+    li {
+      padding: 0;
+      margin: 0 0 3px 0;
+      background-color: darken(whitesmoke, 0%);
+      line-height: 30px;
+      color: #1a1a1a;
+      text-shadow: none;
+      font-weight: bold;
+      border-bottom: 1px solid darken(whitesmoke, 20%);
+    }
+
+    dnd-nodrag {
+      margin: 0;
+      padding: 0;
+      height: 30px;
+      @include display(flex);
+      @include flex-direction(row);
+
+      .handle {
+        width: 50px;
+        font-size: 2rem;
+        letter-spacing: -2px;
+      }
+      .number {
+        width: 30px;
+        text-align: center;
+      }
+      .username {
+        min-width: 200px;
+        @include flex(1);
+        text-align: left;
+        font-size: 1.8rem;
+      }
+      button {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        margin: 0;
+        line-height: 20px;
+        color: red;
+        font-size: 2rem;
+        font-weight: bold;
+        border: none;
+        background-color: whitesmoke;
+      }
+    }
+  }
+
 }

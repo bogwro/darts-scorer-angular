@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="48px" height="41px" viewBox="0 0 48 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>throw</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="game---501" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="iPad-Landscape" sketch:type="MSArtboardGroup" transform="translate(-126.000000, -168.000000)" fill="#4A4A4A">
+            <g id="throw" sketch:type="MSLayerGroup" transform="translate(114.000000, 155.000000)">
+                <path d="M34.3195073,63.9848371 L33.9384451,62.6207407 L33.8817065,56.0834001 C33.8817065,56.0834001 32.1393984,55.443799 32.1817119,53.9516376 C31.9177331,52.0378991 32.1252137,47.840939 32.1252137,47.840939 L32.4651645,47.4996737 L33.6549924,23.3400207 C33.6549924,23.3400207 32.4543457,22.2494188 30.5668253,20.3559391 C23.8298365,13.5976805 27.4363445,3.87656392 33.9528701,9.13494348 L34.2783959,7.42186409 L34.3606188,7.42186409 L34.6861446,9.13494348 C41.2026702,3.87656392 44.8091782,13.5865864 38.0721894,20.344845 C36.184669,22.2383247 34.9840223,23.3342324 34.9840223,23.3342324 L36.1738502,47.4970207 L36.513801,47.8394919 C36.513801,47.8394919 36.7212816,52.0371755 36.4573028,53.9509141 C36.4996163,55.4430755 34.7573082,56.0829177 34.7573082,56.0829177 L34.7005696,62.6204995 L34.3195073,63.9848371" id="Page-1" sketch:type="MSShapeGroup" transform="translate(34.439736, 35.757615) rotate(-310.000000) translate(-34.439736, -35.757615) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

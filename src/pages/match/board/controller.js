@@ -15,13 +15,14 @@ class BoardCtrl {
     this.$rootScope = $rootScope;
     this.$scope = $scope;
 
-    this.game = this.match.game;
-
-    window.game = this.game;
-
     if(!this.game) {
-      this.$state.go('games');
+      this.match.createPlayer('Player 1');
+      this.match.createPlayer('Player 2');
+      this.match.start(501, {startingPoints: 501});
+      //this.$state.go('games');
     }
+
+    this.game = this.match.game;
 
     this.onBoardClickHandle = null;
 
@@ -77,6 +78,7 @@ class BoardCtrl {
 
   undo() {
     if(this.game.currentRound.size) {
+      this.game.currentPlayer.winner = false;
       this.game.currentRound.pop();
     }
   }
@@ -91,6 +93,11 @@ class BoardCtrl {
 
   miss() {
     this.game.throw(0);
+  }
+
+  get checkoutHints() {
+    let hints = this.game.getCheckoutHint(this.game.currentPlayerTotalPoints, this.throwsLeft);
+    return hints ? hints[0] : [];
   }
 
 

@@ -15,8 +15,8 @@ export class Match {
     this._game = null;
   }
 
-  start(gameId) {
-    this._game = new DartsCore.games[`Darts${gameId}Game`](Array.from(this._players.values()));
+  start(gameId, options = {}) {
+    this._game = new DartsCore.games[`Darts${gameId}Game`](Array.from(this._players.values()), options);
   }
 
   get DartsCore() {

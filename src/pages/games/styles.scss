@@ -1,1 +1,70 @@
 @import "../../styles/mixins";
+
+
+
+.gamesWrapper {
+  width: 100%;
+  @include flex(1);
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+  @include align-items(flex-start);
+  @include justify-content(flex-start);
+
+  h1 {
+    display: block;
+    width: 100%;
+    background-color: darken(red, 10%);
+    padding: 0;
+    margin: 0;
+    line-height: 60px;
+    height: 60px;
+    color: darken(#fff, 10%);
+  }
+  .list-group {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include align-items(stretch);
+    @include justify-content(space-between);
+
+    button {
+      outline: 0 !important;
+      -webkit-appearance:none;
+      display: block;
+      max-width: 22%;
+      min-width: 250px;
+      box-sizing: border-box;
+      background-color: whitesmoke;
+      padding: 20px;
+      margin-bottom: 20px;
+      margin-left: 5px;
+      margin-right: 5px;
+      border: 3px solid darken(#fff, 20%);
+
+      h4 {
+        color: darken(#171717, 0%);
+        font-size: 2rem;
+      }
+      p {
+        color: darken(#fff, 40%);
+      }
+
+      &:hover {
+        background-color: #fff;
+        border: 3px solid darken(red, 10%);
+
+
+        h4 {
+          color: darken(red, 10%);
+        }
+        p {
+          color: darken(#fff, 70%);
+        }
+      }
+    }
+  }
+}

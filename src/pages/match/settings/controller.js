@@ -23,7 +23,10 @@ class MatchSettingsCtrl {
     this.game = $state.params.game;
 
     if(!this.game) {
-      $state.go('games');
+      //$state.go('games');
+      this.game = {
+        name: '501'
+      };
     }
 
     $log.log(`${ctrlName} called.`, this.game);

@@ -1,16 +1,19 @@
 @import "../../../styles/mixins";
 
+
+
+
 svg {
   display: block;
-  height: 100vh !important;
-  width: 100vw;
+  height: 100% !important;
+  width: 100%;
   margin: 0 auto !important;
   overflow: hidden;
 }
 svg text {
-  font-size: 4.4rem;
+  font-size: 2rem;
   font-family: Verdana;
-  text-align: center;
+  text-align: center !important;
   cursor: pointer;
   pointer-events: none;
   -webkit-user-select: none;
@@ -18,27 +21,62 @@ svg text {
   -ms-user-select: none;
   user-select: none;
 }
+$red: darken(red, 10%) !important;
+$green: darken(green, 10%) !important;
+$white: darken(white, 30%) !important;
+$black: lighten(black, 10%) !important;
+
 
 svg g g:nth-child(odd) text{
-  fill: #00591E;
+  fill: #fff;
 }
 svg g g:nth-child(even) text{
-  fill: #B01800;
+  fill: #fff;
 }
-svg g g:nth-child(odd) .lower:hover,
-svg g g:nth-child(odd) .upper:hover {
-  fill: darken(#D9D9D1, 20%) !important;
+// upper background color np:20
+svg g g g g:nth-child(odd) path:nth-child(2) {
+  fill: $red;
 }
-svg g g:nth-child(even) .lower:hover,
-svg g g:nth-child(even) .upper:hover {
-  fill: lighten(#1E1E1E, 20%) !important;
+// middle background color np:20
+svg g g g g:nth-child(odd) path:nth-child(3),
+svg g g g g:nth-child(odd) path:nth-child(5)
+{
+  fill: $black;
+}
+svg g g g g:nth-child(odd) text:nth-child(6){
+  font-size: 3.5rem;
+}
+// lower background color np:20
+svg g g g g:nth-child(odd) path:nth-child(4) {
+  fill: $red;
+}
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+// upper background color np:1
+svg g g g g:nth-child(even) path:nth-child(2) {
+  fill: $green;
+}
+// upper background color np:1
+svg g g g g:nth-child(even) path:nth-child(3),
+svg g g g g:nth-child(even) path:nth-child(5)
+{
+  fill: $white;
+}
+svg g g g g:nth-child(even) text:nth-child(6){
+  font-size: 3.5rem;
+}
+// upper background color np:1
+svg g g g g:nth-child(even) path:nth-child(4) {
+  fill: $green;
 }
 
-svg g g:nth-child(odd) .double:hover,
-svg g g:nth-child(odd) .triple:hover {
-  fill: lighten(#00591E, 20%) !important;
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+svg g g g g:last-child circle:first-child {
+  fill: $green;
 }
-svg g g:nth-child(even) .double:hover,
-svg g g:nth-child(even) .triple:hover {
-  fill: lighten(#B01800, 20%) !important;
+svg g g g g:last-child circle:last-child {
+  fill: $red;
 }

@@ -1,7 +1,8 @@
-@import "variables";
 @import "mixins";
 
-
+$footer: 40px;
+$btnScore:70px;
+$btnAction:70px;
 /*
  * Globals
  */
@@ -13,27 +14,21 @@ a:hover {
   color: #fff;
 }
 
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
-}
+
 
 
 /*
  * Base structure
  */
 
-html,
-body {
+html { font-size: 62.5%; }
+
+html, body {
   height: 100%;
-  background-color: #333;
+  background-color: #111;
 }
 body {
+  font-size: 1.4rem;
   color: #fff;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
@@ -47,4 +42,223 @@ body {
   min-height: 100%;
   -webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
   box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+}
+.footer {
+  height: $footer;
+  text-align: center;
+  width: 30%;
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: $footer;
+    color: darken(#fff, 70%);
+  }
+}
+.stage {
+  width: 100vw;
+  height: 100vh;
+}
+.content {
+  width: 100%;
+  @include calc(height, "100% - #{$footer}");
+  @include display(flex);
+  @include flex-direction(column);
+  @include align-items(stretch);
+  @include justify-content(center);
+}
+/////////////////////////////////
+.contentMatch {
+  @include flex(1);
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
+  @include justify-content(flex-start);
+  @include align-items(stretch);
+}
+
+
+.dart-board {
+  width: 100%;
+  @include flex(2);
+  @include display(flex);
+  @include flex-direction(row);
+  @include align-items(stretch);
+  @include justify-content(center);
+}
+.roundNum {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  width: auto;
+  font-size: 3rem;
+}
+.dartsBoardWrapper {
+  @include calc(height, "100vh - #{$footer}");
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  @include align-self(center);
+}
+/////////////////////////////////
+
+.left {
+  @include flex(1);
+  max-width: 30%;
+  background-color: #000;
+  min-height: 500px;
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+  @include justify-content(space-around);
+
+  .rowContent {
+    font-size: 2rem;
+
+    width: 100%;
+    margin-bottom: 1px;
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include justify-content(center);
+    //@include align-content(center);
+  }
+}
+.playerName {
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 3rem;
+  font-weight: 300;
+}
+.pointsSet {
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
+  @include align-items(stretch);
+  @include justify-content(stretch);
+
+  div {
+    @include flex(1);
+    p {
+      color: #4d4d4d;
+      padding: 5px 0 5px 0;
+      margin: 0;
+    }
+    span {
+      font-size: 4rem;
+    }
+  }
+
+  .totalPoints span {
+    color: green;
+  }
+  .roundPoints span {
+    color: darken(#fff, 20%);
+  }
+}
+.throws {
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
+  @include justify-content(center);
+  @include align-content(stretch);
+
+  padding: 5px;
+  padding-bottom: 100px;
+
+
+  .throw {
+   // @include flex(1);
+    position: relative;
+
+    div.miss-btn {
+      padding: 5px;
+      position: absolute;
+    }
+  }
+  .bgScore {
+    background: #171717;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    height: $btnScore;
+    width: $btnScore;
+  }
+
+  .btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
+    outline: 0 !important;
+    -webkit-appearance:none;
+    text-shadow: none; /* Prevent inheritance from `body` */
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+  }
+  .throwScore {
+    line-height: $btnScore;
+    font-size: 4rem;
+    color: #999;
+  }
+}
+
+
+///////////////////////////////////////
+.infoHolder {
+  border-top: 1px solid #171717;
+  border-bottom: 1px solid #171717;
+  color: darken(whitesmoke, 50%);
+
+}
+
+///////////////////////////////////////
+
+.buttonSet {
+  padding: 20px;
+  box-sizing: border-box;
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
+  @include justify-content(space-around);
+  //@include align-content(stretch);
+
+  .btn {
+    background-color: #171717;
+    border: none;
+    display: block;
+    outline: 0 !important;
+    -webkit-appearance:none;
+    box-sizing: border-box;
+    width: $btnAction;
+    height: $btnAction;
+    border-radius: 200px;
+    svg{
+      width: 70%;
+      height: 70%;
+    }
+  }
+  .btn.btn-primary {
+    background-color: lighten(#171717, 0%);
+    border: 2px solid green;
+    color: #222;
+    outline: none;
+    svg path{
+      fill: green;
+    }
+  }
+  .btn-undo:hover {
+   svg path{
+     fill: darken(red, 10%);
+   }
+ }
+  .btn-undo:active {
+    svg path{
+      fill: lighten(red, 10%);
+    }
+  }
+
 }

@@ -30,10 +30,10 @@ var config = {
     sourceMap: true,
     outputStyle: 'expanded',
     includePaths: [
+      path.resolve(__dirname, '..', 'src/styles'),
       path.resolve(__dirname, '..', 'build', 'lib'),
       path.resolve(__dirname, '..', 'node_modules'),
-      path.resolve(__dirname, '..', 'node_modules/bourbon/app/assets/stylesheets'),
-      path.resolve(__dirname, '..', 'src/styles')
+      path.resolve(__dirname, '..', 'node_modules/bourbon/app/assets/stylesheets')
     ]
   },
   module: {

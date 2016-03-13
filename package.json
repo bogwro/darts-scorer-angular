@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Darts Scorer Web App using Angular framework",
   "config": {
-    "host": "localhost",
+    "host": "0.0.0.0",
     "port": "3000"
   },
   "scripts": {
@@ -14,7 +14,16 @@
     "upgrade-packages": "ncu -a && npm install",
     "bower": "bower"
   },
-  "author": "Bogumil Wrona",
+  "contributors": [
+    {
+      "name" : "Agnieszka Wrona",
+      "url" : "https://github.com/awrona"
+    },
+    {
+      "name" : "Bogumil Wrona",
+      "url" : "https://github.com/bogwro"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -38,7 +47,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "darts-board-svg": "github:awrona/darts-board-svg",
-    "darts-scorer-core": "^1.0.0",
+    "darts-scorer-core": "^1.1.0",
     "del": "^2.2.0",
     "eslint": "^2.2.0",
     "eslint-loader": "^1.3.0",
