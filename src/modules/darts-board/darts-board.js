@@ -1,3 +1,5 @@
+/*global angular, _*/
+
 let ngModName = 'ds.mod.board.directive';
 let template = require('./template.jade');
 
@@ -13,7 +15,10 @@ angular
       link,
       replace: true,
       restrict: 'E',
-      template
+      template,
+      scope: {
+        highlightedFields: '='
+      }
     };
 
     function link(scope, element) {
@@ -61,6 +66,53 @@ angular
 
         }
       });
+
+      scope.$watchCollection('highlightedFields', function(fields, oldFields) {
+        if (angular.equals(fields, oldFields)) {
+          return;
+        }
+
+        _.difference(fields, oldFields).forEach((field) => removeHighlight(field));
+
+        fields.forEach((field) => highlight(field));
+
+      });
+
+      function highlight(field) {
+        $log.log('highlight', field);
+        fieldToElementIds(field).forEach((elementId) => angular.element(document.querySelector(`#${elementId}`)).addClass('highlight'));
+      }
+
+      function removeHighlight(field) {
+        $log.log('removeHighlight', field);
+        fieldToElementIds(field).forEach((elementId) => angular.element(document.querySelector(`#${elementId}`)).removeClass('highlight'));
+      }
+
+      function fieldToElementIds(field) {
+        let ids = [];
+        let matches = /(S|D|T)(\d{1,2})/g.exec(field);
+        let str = 'db_';
+
+        if (field === 'SB') {
+          ids.push(`${str}_25_single`);
+        } else if (field === 'DB') {
+          ids.push(`${str}_25_double`);
+        } else {
+          str += matches[2];
+          if (matches[1] === 'S') {
+            str += '_single_';
+            ids.push(`${str}inner`, `${str}outer`);
+          } else if (matches[1] === 'D') {
+            ids.push(`${str}_double`);
+          } else {
+            ids.push(`${str}_triple`);
+          }
+        }
+
+        $log.log('fieldToElementIds', ids);
+
+        return ids;
+      }
 
     }
   }]);

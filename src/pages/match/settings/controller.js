@@ -23,10 +23,7 @@ class MatchSettingsCtrl {
     this.game = $state.params.game;
 
     if(!this.game) {
-      //$state.go('games');
-      this.game = {
-        name: '501'
-      };
+      $state.go('games');
     }
 
     $log.log(`${ctrlName} called.`, this.game);
@@ -35,7 +32,7 @@ class MatchSettingsCtrl {
 
   addUser(name) {
     this.$log.log('addUser', name);
-    return this.users.push({name, toString: function() { return this.name; }});
+    return this.users.push({name});
   }
 
   removeUser(user) {

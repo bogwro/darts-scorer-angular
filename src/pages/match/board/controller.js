@@ -15,14 +15,15 @@ class BoardCtrl {
     this.$rootScope = $rootScope;
     this.$scope = $scope;
 
-    if(!this.game) {
-      this.match.createPlayer('Player 1');
-      this.match.createPlayer('Player 2');
-      this.match.start(501, {startingPoints: 501});
-      //this.$state.go('games');
-    }
-
     this.game = this.match.game;
+
+    this.highlightedFields = [];
+
+    window.game = this.game;
+
+    if(!this.game) {
+      this.$state.go('games');
+    }
 
     this.onBoardClickHandle = null;
 
@@ -58,7 +59,7 @@ class BoardCtrl {
   }
 
   get playerName() {
-    return this.game.currentPlayer._user.toString();
+    return this.game.currentPlayer._user.name;
   }
 
   get roundNumber() {
@@ -97,7 +98,27 @@ class BoardCtrl {
 
   get checkoutHints() {
     let hints = this.game.getCheckoutHint(this.game.currentPlayerTotalPoints, this.throwsLeft);
-    return hints ? hints[0] : [];
+    let retVal = [];
+
+    if (hints.length) {
+      retVal = hints[0];
+      this.highlightField(retVal[0].toString());
+    } else {
+      this.clearFieldHighlighting();
+    }
+
+    return retVal;
+  }
+
+  highlightField(field) {
+    if (this.highlightedFields.indexOf(field) < 0) {
+      this.highlightedFields.push(field);
+      this.$rootScope.$emit('darts.board.register.highlighting', this.highlightedFields);
+    }
+  }
+
+  clearFieldHighlighting() {
+    this.highlightedFields.length = 0;
   }
 
 
