@@ -1,5 +1,6 @@
 @import "../../../styles/mixins";
 
+
 .contentSettings {
   @include flex(1);
   @include display(flex);
@@ -10,12 +11,12 @@
 h1 {
   display: block;
   width: 100%;
-  background-color: darken(red, 10%);
+  background-color: $txt-red;
   padding: 0;
   margin: 0;
   line-height: 60px;
   height: 60px;
-  color: darken(#fff, 10%);
+  color: $off-white;
 }
 .settingsWrapper {
   width: 100%;
@@ -25,7 +26,7 @@ h1 {
   @include flex-wrap(nowrap);
 
   .leftPlayers {
-    background-color: whitesmoke;
+    background-color: $off-white;
     @include flex(1);
     @include display(flex);
     @include flex-direction(column);
@@ -33,6 +34,22 @@ h1 {
 
     .listHolder {
       @include flex(1);
+      position: relative;
+      .bg-players {
+        position: absolute;
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(flex-bottom);
+        width: 100%;
+        bottom: 0;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+        svg g g{
+          fill: rgba(#000, .05);
+        }
+      }
     }
     .formHolder {
       padding: 20px;
@@ -51,6 +68,21 @@ h1 {
 
     .listHolder {
       @include flex(1);
+      position: relative;
+      .bg-settings {
+        position: absolute;
+        width: 100%;
+        height: 90%;
+        bottom: -10%;
+        right: -20%;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+        svg g g{
+          fill: rgba(#fff, .05);
+        }
+      }
 
     }
     .formHolder {
@@ -58,14 +90,14 @@ h1 {
       padding: 20px;
       height: 100px;
       box-sizing: border-box;
-      background-color: whitesmoke;
+      background-color: $off-white;
     }
 
     ///btn start
     button {
       outline: 0 !important;
       -webkit-appearance:none;
-      background-color: darken(whitesmoke, 0%);
+      background-color: $off-white;
       border: none;
       width: 100%;
       height: 100%;
@@ -79,8 +111,8 @@ h1 {
       letter-spacing: 5px;
 
       &:hover {
-        background-color: darken(whitesmoke, 5%);
-        color: #000;
+        background-color: $txt-green;
+        color: #fff;
       }
     }
 
@@ -98,7 +130,6 @@ h1 {
   .form-inline {
     box-sizing: border-box;
     width: 100%;
-    background-color: whitesmoke;
     padding: 5px;
 
 
@@ -106,14 +137,14 @@ h1 {
     .form-group {
       width: 100%;
       label {
-        color: #1a1a1a;
-        width: 30%;
+        color: $off-white;
+        width: 10%;
         display: block;
         line-height: 40px;
         font-size: 2rem;
       }
       .input-group {
-        @include calc(width, "70% - 10px");
+        @include calc(width, "90% - 1px");
       }
       input {
         outline: 0 !important;
@@ -123,28 +154,32 @@ h1 {
         box-sizing: border-box;
         line-height: 40px;
         text-indent: 20px;
-        background-color: whitesmoke;
+        background-color: lighten(#171717, 10%);
         border: none;
-        border-bottom: 2px solid #1a1a1a;
-        color: #1a1a1a;
+        border-bottom: 2px solid rgba(#fff, .3);
+        color: $off-white;
         font-size: 2rem;
+        font-weight: 200;
       }
 
     }
     button {
       outline: 0 !important;
       -webkit-appearance:none;
-      background-color: lighten(#171717, 0%);
-      color: whitesmoke;
+      background-color: lighten(#171717, 10%);
+      color: $off-white;
       border: none;
       width: 10%;
-      height: 42px;
+      height: 40px;
       line-height: 32px;
       padding: 2px;
       font-size: 3rem;
       display: block;
-      margin-top: 0px;
+      margin-top: 0;
 
+      &:hover {
+        background-color: $txt-green;
+      }
     }
   }
 
@@ -160,12 +195,11 @@ h1 {
     li {
       padding: 0;
       margin: 0 0 3px 0;
-      background-color: darken(whitesmoke, 0%);
       line-height: 30px;
       color: #1a1a1a;
       text-shadow: none;
       font-weight: bold;
-      border-bottom: 1px solid darken(whitesmoke, 20%);
+      border-bottom: 1px solid darken($off-white, 10%);
     }
 
     dnd-nodrag {
@@ -179,6 +213,20 @@ h1 {
         width: 50px;
         font-size: 2rem;
         letter-spacing: -2px;
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(center);
+
+        svg {
+          width: 40% !important;
+          g g {
+            fill: darken(#fff, 30%) !important;
+          }
+        }
+
+        &:hover svg g g{
+          fill: darken(#000, 10%) !important;
+        }
       }
       .number {
         width: 30px;
@@ -196,11 +244,17 @@ h1 {
         padding: 0;
         margin: 0;
         line-height: 20px;
-        color: red;
         font-size: 2rem;
         font-weight: bold;
         border: none;
-        background-color: whitesmoke;
+        background-color: $off-white;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+        &:hover svg g g{
+          fill: darken(red, 10%) !important;
+        }
       }
     }
   }

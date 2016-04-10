@@ -1,6 +1,22 @@
 @import "../../styles/mixins";
 
+.bg-game {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
 
+  svg {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    height: 130%;
+    width: 130%;
+  }
+}
 
 .gamesWrapper {
   width: 100%;
@@ -10,6 +26,9 @@
   @include flex-wrap(nowrap);
   @include align-items(flex-start);
   @include justify-content(flex-start);
+  position: relative;
+  background-color: rgba(#000, .8);
+
 
   h1 {
     display: block;
@@ -19,7 +38,7 @@
     margin: 0;
     line-height: 60px;
     height: 60px;
-    color: darken(#fff, 10%);
+    color: darken(#fff, 0%);
   }
   .list-group {
     box-sizing: border-box;
@@ -38,31 +57,31 @@
       max-width: 22%;
       min-width: 250px;
       box-sizing: border-box;
-      background-color: whitesmoke;
+      background-color: rgba(#222, .8);
       padding: 20px;
       margin-bottom: 20px;
       margin-left: 5px;
       margin-right: 5px;
-      border: 3px solid darken(#fff, 20%);
+      border: 3px solid darken(#fff, 80%);
 
       h4 {
-        color: darken(#171717, 0%);
+        color: darken(#fff, 50%);
         font-size: 2rem;
       }
       p {
-        color: darken(#fff, 40%);
+        color: darken(#fff, 60%);
       }
 
       &:hover {
-        background-color: #fff;
-        border: 3px solid darken(red, 10%);
+        background-color: #222;
+        border: 3px solid darken(#fff, 50%);
 
 
         h4 {
-          color: darken(red, 10%);
+          color: darken(#fff, 10%);
         }
         p {
-          color: darken(#fff, 70%);
+          color: darken(#fff, 30%);
         }
       }
     }

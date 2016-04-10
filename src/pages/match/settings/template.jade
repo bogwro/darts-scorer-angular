@@ -6,18 +6,21 @@ block content
     .settingsWrapper
       .leftPlayers
         .listHolder
+          .bg-players
+            include ./players-bg.svg
           ul.list-group(dnd-list='matchVM.users')
             li.list-group-item(ng-repeat='user in matchVM.users' dnd-draggable='user', dnd-moved='matchVM.users.splice($index, 1)', dnd-effect-allowed='move')
               dnd-nodrag
-                  .handle(dnd-handle) :::
+                  .handle(dnd-handle)
+                    include ./drag.svg
                   .number 1
                   .username {{user.name}}
-                  button.btn.btn-danger-outline(type='button', ng-click='matchVM.removeUser(user)') X
-
+                  button.btn.btn-danger-outline(type='button', ng-click='matchVM.removeUser(user)')
+                    include ./backspace.svg
         .formHolder
           form.form-inline(name='newUserForm', novalidate='', autocomplete='off')
             .form-group
-              label.sr-only(for='newUser') Name
+              label.sr-only(for='newUser')
               .input-group
                 input#newUser.form-control(type='text', placeholder='Name', required='', name='username', ng-model='matchVM.newUser.name', autocomplete='off')
             button.btn.btn-primary(type='submit', ng-click='newUserForm.$valid && matchVM.addUser(newUserForm.username.$viewValue) && matchVM.reset(form)') +
@@ -25,6 +28,8 @@ block content
 
       .rightSettings
         .listHolder
+          .bg-settings
+            include ./settings-bg.svg
         .formHolder
           button.btn(type='button', ng-click='matchVM.users.length && matchVM.start()', ng-class='{disabled: !matchVM.users.length, "btn-primary": matchVM.users.length}') START
 

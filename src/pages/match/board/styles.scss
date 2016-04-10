@@ -1,82 +1,79 @@
 @import "../../../styles/mixins";
 
 
-
-
-svg {
-  display: block;
-  height: 100% !important;
-  width: 100%;
-  margin: 0 auto !important;
-  overflow: hidden;
-}
-svg text {
-  font-size: 2rem;
-  font-family: Verdana;
-  text-align: center !important;
-  cursor: pointer;
-  pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 $red: darken(red, 10%) !important;
-$green: darken(green, 10%) !important;
+$green: darken(green, 5%) !important;
 $white: darken(white, 30%) !important;
 $black: lighten(black, 10%) !important;
+.dart-board {
+  svg {
+    display: block;
+    height: 100% !important;
+    width: 100%;
+    margin: 0 auto !important;
+    overflow: hidden;
+  }
+  svg text {
+    font-size: 2rem;
+    font-family: Verdana;
+    text-align: center !important;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
+  svg g g:nth-child(odd) text {
+    fill: #fff;
+  }
+  svg g g:nth-child(even) text {
+    fill: #fff;
+  }
+  // upper background color np:20
+  svg g g g g:nth-child(odd) path:nth-child(2) {
+    fill: $red;
+  }
+  // middle background color np:20
+  svg g g g g:nth-child(odd) path:nth-child(3),
+  svg g g g g:nth-child(odd) path:nth-child(5) {
+    fill: $black;
+  }
+  svg g g g g:nth-child(odd) text:nth-child(6) {
+    font-size: 3.5rem;
+  }
+  // lower background color np:20
+  svg g g g g:nth-child(odd) path:nth-child(4) {
+    fill: $red;
+  }
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
 
-svg g g:nth-child(odd) text{
-  fill: #fff;
-}
-svg g g:nth-child(even) text{
-  fill: #fff;
-}
-// upper background color np:20
-svg g g g g:nth-child(odd) path:nth-child(2) {
-  fill: $red;
-}
-// middle background color np:20
-svg g g g g:nth-child(odd) path:nth-child(3),
-svg g g g g:nth-child(odd) path:nth-child(5)
-{
-  fill: $black;
-}
-svg g g g g:nth-child(odd) text:nth-child(6){
-  font-size: 3.5rem;
-}
-// lower background color np:20
-svg g g g g:nth-child(odd) path:nth-child(4) {
-  fill: $red;
-}
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
+  // upper background color np:1
+  svg g g g g:nth-child(even) path:nth-child(2) {
+    fill: $green;
+  }
+  // upper background color np:1
+  svg g g g g:nth-child(even) path:nth-child(3),
+  svg g g g g:nth-child(even) path:nth-child(5) {
+    fill: $white;
+  }
+  svg g g g g:nth-child(even) text:nth-child(6) {
+    font-size: 3.5rem;
+  }
+  // upper background color np:1
+  svg g g g g:nth-child(even) path:nth-child(4) {
+    fill: $green;
+  }
 
-// upper background color np:1
-svg g g g g:nth-child(even) path:nth-child(2) {
-  fill: $green;
-}
-// upper background color np:1
-svg g g g g:nth-child(even) path:nth-child(3),
-svg g g g g:nth-child(even) path:nth-child(5)
-{
-  fill: $white;
-}
-svg g g g g:nth-child(even) text:nth-child(6){
-  font-size: 3.5rem;
-}
-// upper background color np:1
-svg g g g g:nth-child(even) path:nth-child(4) {
-  fill: $green;
-}
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-svg g g g g:last-child circle:first-child {
-  fill: $green;
-}
-svg g g g g:last-child circle:last-child {
-  fill: $red;
+  svg g g g g:last-child circle:first-child {
+    fill: $green;
+  }
+  svg g g g g:last-child circle:last-child {
+    fill: $red;
+  }
 }

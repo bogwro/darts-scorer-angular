@@ -3,6 +3,8 @@
 $footer: 40px;
 $btnScore:70px;
 $btnAction:70px;
+
+$colorLeft: #2C2C2C;
 /*
  * Globals
  */
@@ -44,14 +46,23 @@ body {
   box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
 }
 .footer {
+  position: relative;
+  z-index: 10000;
   height: $footer;
   text-align: center;
   width: 30%;
+  padding-right: 70%;
+  background-color: #000;
+
   p {
     margin: 0;
     padding: 0;
     line-height: $footer;
     color: darken(#fff, 70%);
+
+    a {
+      color: darken(#fff, 50%);
+    }
   }
 }
 .stage {
@@ -75,6 +86,28 @@ body {
   @include justify-content(flex-start);
   @include align-items(stretch);
 }
+.infoHolderWinner {
+  z-index: 10000000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(#000, .8);
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  font-size: 15vh;
+  color: whitesmoke;
+  text-shadow: 0 0 10px #000;
+
+  p {
+    margin: 0;
+    padding: 5vh 0;
+    width: 100%;
+    text-align: center;
+    background-color: $txt-red;
+  }
+}
 
 
 .dart-board {
@@ -85,6 +118,8 @@ body {
   @include align-items(stretch);
   @include justify-content(center);
 }
+
+
 .roundNum {
   position: absolute;
   right: 40px;
@@ -104,11 +139,12 @@ body {
 .left {
   @include flex(1);
   max-width: 30%;
+  min-width: 300px;
   background-color: #000;
   min-height: 500px;
   @include display(flex);
-  @include flex-direction(column);
-  @include flex-wrap(nowrap);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
   @include justify-content(space-around);
 
   .rowContent {
@@ -127,8 +163,9 @@ body {
 .playerName {
   color: #fff;
   letter-spacing: 1px;
-  font-size: 3rem;
+  font-size: 3rem !important;
   font-weight: 300;
+
 }
 .pointsSet {
   @include display(flex);
@@ -140,7 +177,8 @@ body {
   div {
     @include flex(1);
     p {
-      color: #4d4d4d;
+      color: darken($off-white, 45%);
+      text-shadow: 1px 1px #000;
       padding: 5px 0 5px 0;
       margin: 0;
     }
@@ -148,13 +186,29 @@ body {
       font-size: 4rem;
     }
   }
-
+  .totalPoints{
+    @include align-self(stretch);
+    @include display(flex);
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
+    @include align-items(center);
+    @include justify-content(center);
+    border-right: 1px solid #000000;
+  }
   .totalPoints span {
-    color: green;
+    color: $txt-green;
   }
   .roundPoints span {
     color: darken(#fff, 20%);
   }
+}
+.throws-wrapper {
+  width: 100%;
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+  @include justify-content(center);
+
 }
 .throws {
   @include display(flex);
@@ -162,15 +216,17 @@ body {
   @include flex-wrap(nowrap);
   @include justify-content(center);
   @include align-content(stretch);
-
   padding: 5px;
   padding-bottom: 100px;
 
-
   .throw {
-   // @include flex(1);
+
     position: relative;
 
+    svg {
+      width: 100%;
+      height: 100%;
+    }
     div.miss-btn {
       padding: 5px;
       position: absolute;
@@ -183,6 +239,7 @@ body {
     padding: 5px;
     height: $btnScore;
     width: $btnScore;
+    border: 1px solid rgba(#fff, .2);
   }
 
   .btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
@@ -209,26 +266,38 @@ body {
 
 ///////////////////////////////////////
 .infoHolder {
-  border-top: 1px solid #171717;
-  border-bottom: 1px solid #171717;
-  color: darken(whitesmoke, 50%);
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+  @include align-content(center);
+  @include justify-content(center);
+  width: 100%;
+  font-size: 2rem;
+  color: darken(whitesmoke, 10%);
+  margin-top: 1px;
 
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 ///////////////////////////////////////
 
 .buttonSet {
+  width: 100%;
   padding: 20px;
+  margin-top: 1px;
   box-sizing: border-box;
   @include display(flex);
   @include flex-direction(row);
   @include flex-wrap(nowrap);
   @include justify-content(space-around);
+  @include align-items(center);
   //@include align-content(stretch);
 
   .btn {
     background-color: #171717;
-    border: none;
     display: block;
     outline: 0 !important;
     -webkit-appearance:none;
@@ -236,6 +305,7 @@ body {
     width: $btnAction;
     height: $btnAction;
     border-radius: 200px;
+    border: 1px solid rgba(#fff, .2);
     svg{
       width: 70%;
       height: 70%;
@@ -260,5 +330,15 @@ body {
       fill: lighten(red, 10%);
     }
   }
+
+}
+.left {
+  .playerName {background-color: darken($colorLeft, 4%);}
+  .pointsSet {  background-color: darken($colorLeft, 0%);}
+  .totalPoints {background-color: darken($colorLeft, 6%);}
+  .throws-wrapper {  background-color: darken($colorLeft, 4%);}
+  .infoHolder {  background-color: darken($colorLeft, 8%);}
+  .buttonSet {  background-color: darken($colorLeft, 0%);}
+
 
 }
