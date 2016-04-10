@@ -16,7 +16,8 @@ var config = {
   },
   externals: {
     $: 'jQuery',
-    angular: 'angular'
+    angular: 'angular',
+    _: 'underscore'
   },
   output: {
     path: path.resolve(__dirname, '..', 'build'),
