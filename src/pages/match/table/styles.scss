@@ -1,2 +1,114 @@
 @import "../../../styles/mixins";
 
+.table-page {
+  width: 100%;
+  @include flex(1);
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+  @include align-items(flex-start);
+  @include justify-content(flex-start);
+  box-sizing: border-box;
+}
+h1 {
+  position: relative;
+  padding-left: 45px !important;
+  box-sizing: border-box;
+}
+.return-icon {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 10px;
+  width: 40px;
+
+  svg{
+    height: 100%;
+    width: 100%;
+    g g {
+      fill: rgba(#000, .9);
+    }
+  }
+  &:hover svg g g {
+    fill: rgba(#fff, .9);
+  }
+}
+.table-wrapper {
+  width: 100%;
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+  @include align-items(flex-start);
+  @include justify-content(flex-start);
+  box-sizing: border-box;
+  padding: 5px;
+}
+.player-table {
+ background-color: lighten($txt-black, 0%);
+  height: 150px;
+  width: 200px;
+  box-sizing: content-box;
+  padding: 0px;
+  margin: 5px;
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(wrap);
+  @include align-items(flex-start);
+  @include justify-content(flex-start);
+}
+.player-name {
+  padding: 10px 0;
+  font-size: 1.8rem;
+  width: 100%;
+  background-color: lighten($txt-black, 7%);
+  color: $off-white;
+}
+.player-settings {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px ;
+  @include flex(1);
+  @include display(flex);
+  @include flex-direction(column);
+  @include flex-wrap(wrap);
+  @include align-items(center);
+  @include justify-content(space-around);
+}
+
+.highest-score,
+.lowest-score {
+  width: 100%;
+  @include display(flex);
+  @include flex-direction(row);
+  @include flex-wrap(nowrap);
+  @include align-items(center);
+  @include justify-content(space-between);
+
+  p {
+    margin: 0;
+    padding: 0;
+    color: darken($off-white, 40%);
+    text-align: left;
+  }
+  span {
+    display: block;
+    width: 30%;
+    text-align: center;
+  }
+}
+.total-points {
+  width: 100%;
+  border-bottom: 1px solid lighten($txt-black, 2%);
+  line-height: 40px;
+  text-align: center;
+  color: lighten($txt-green, 10%);
+  font-size: 1.8rem;
+}
+
+.highest-score span {
+
+  color: darken($off-white, 20%);
+}
+.lowest-score span {
+  color: darken($txt-red, 10%);
+}

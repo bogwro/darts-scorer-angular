@@ -1,5 +1,21 @@
 extends ../../../common/templates/base
 
 block content
+  .table-page
 
-  h1 MATCH TABLE
+    h1 MATCH TABLE
+      .return-icon
+        include ./return.svg
+    .table-wrapper
+
+      .player-table
+        .player-name Aga
+        .total-points 356
+        .player-settings
+
+          .highest-score
+            p highest score
+            span 356
+          .lowest-score
+            p lowest score
+            span 356

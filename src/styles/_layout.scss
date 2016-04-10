@@ -17,8 +17,6 @@ a:hover {
 }
 
 
-
-
 /*
  * Base structure
  */
@@ -50,18 +48,19 @@ body {
   z-index: 10000;
   height: $footer;
   text-align: center;
-  width: 30%;
-  padding-right: 70%;
   background-color: #000;
-
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 300px;
   p {
     margin: 0;
     padding: 0;
     line-height: $footer;
     color: darken(#fff, 70%);
-
+    width: 100%;
     a {
-      color: darken(#fff, 50%);
+      color: darken(#fff, 60%);
+      text-decoration: none;
     }
   }
 }
