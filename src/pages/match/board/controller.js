@@ -121,7 +121,6 @@ class BoardCtrl {
     this.highlightedFields.length = 0;
   }
 
-
 }
 
 BoardCtrl.$inject = ['$log', '$state', dartsMatchServiceName, '$rootScope', '$scope'];
