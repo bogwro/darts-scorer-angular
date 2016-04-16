@@ -7,16 +7,17 @@
     "port": "3000"
   },
   "scripts": {
-    "pretest": "npm i && bower install",
-    "test": "gulp test",
-    "prestart": "npm i && bower install",
-    "start": "gulp webpack-dev-server",
-    "release": "NODE_ENV=production gulp release",
+    "bower": "bower",
+    "commit": "git-cz",
     "gulp": "gulp",
-    "upgrade-packages": "ncu -a && npm install",
-    "upgrade-bower-packages": "ncu -a -m bower && bower install",
+    "prestart": "npm i && bower install",
+    "pretest": "npm i && bower install",
+    "release": "NODE_ENV=production gulp release",
+    "start": "gulp webpack-dev-server",
+    "test": "gulp test",
     "upgrade": "npm run upgrade-packages && npm run upgrade-bower-packages",
-    "bower": "bower"
+    "upgrade-bower-packages": "ncu -a -m bower && bower install",
+    "upgrade-packages": "ncu -a && npm install"
   },
   "contributors": [
     {
@@ -49,6 +50,7 @@
     "bourbon": "^4.2.7",
     "bower": "^1.7.9",
     "chai": "^3.5.0",
+    "commitizen": "^2.7.6",
     "css-loader": "^0.23.1",
     "darts-board-svg": "github:awrona/darts-board-svg",
     "darts-scorer-core": "^1.2.0",
