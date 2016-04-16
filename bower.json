@@ -1,8 +1,8 @@
 {
   "name": "darts-scorer-angular",
   "description": "Darts Scorer Web App using Angular framework",
-  "main": "",
   "authors": [
+    "Agnieszka Wrona",
     "Bogumil Wrona"
   ],
   "license": "MIT",
@@ -14,7 +14,6 @@
   "moduleType": [
     "es6"
   ],
-  "homepage": "",
   "private": true,
   "ignore": [
     "**/.*",
