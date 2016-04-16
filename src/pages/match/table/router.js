@@ -17,6 +17,7 @@ angular
     $stateProvider
       .state('match.table', {
         controller,
+        controllerAs: 'tableVM',
         template,
         url
       });

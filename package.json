@@ -57,7 +57,7 @@
     "css-loader": "^0.23.1",
     "cz-conventional-changelog": "^1.1.5",
     "darts-board-svg": "github:awrona/darts-board-svg",
-    "darts-scorer-core": "^1.2.0",
+    "darts-scorer-core": "^1.3.0",
     "del": "^2.2.0",
     "eslint": "^2.8.0",
     "eslint-loader": "^1.3.0",

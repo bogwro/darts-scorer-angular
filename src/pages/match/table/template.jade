@@ -4,18 +4,18 @@ block content
   .table-page
 
     h1 MATCH TABLE
-      .return-icon
+      .return-icon(ui-sref='match.board')
         include ./return.svg
     .table-wrapper
 
-      .player-table
-        .player-name Aga
-        .total-points 356
+      .player-table(ng-repeat='data in tableVM.tableData')
+        .player-name {{data.playerName}}
+        .total-points {{data.totalPoints}}
         .player-settings
 
           .highest-score
             p highest score
-            span 356
+            span {{data.max}}
           .lowest-score
-            p lowest score
-            span 356
+            p avg
+            span {{data.avg}}
