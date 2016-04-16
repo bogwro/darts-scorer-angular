@@ -7,7 +7,7 @@ require('../../globals');
 exports.task = function(callback) {
   runSequence.use(gulp);
 
-  runSequence('clean', 'webpack-build-prod', 'copy-build-to-dist', function(error) {
+  runSequence('clean', 'webpack-build-prod', 'copy-build-to-dist', 'deploy-gh-pages', function(error) {
     if(error) {
       console.log(error.message); // eslint-disable-line
     } else {
