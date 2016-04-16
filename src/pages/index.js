@@ -19,5 +19,5 @@ angular
   ])
 
   .config(['$urlRouterProvider', function($urlRouterProvider) {
-    $urlRouterProvider.when('', '/');
+    $urlRouterProvider.when('', '/games');
   }]);
