@@ -1,3 +1,5 @@
+/*global gulp*/
+
 'use strict';
 
 var ghPages = require('gulp-gh-pages');
