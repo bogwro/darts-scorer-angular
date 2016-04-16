@@ -16,18 +16,6 @@ class GamesCtrl {
       {
         name: '501',
         id: '501'
-      },
-      {
-        name: 'Game A',
-        id: 'A'
-      },
-      {
-        name: 'Game B',
-        id: 'B'
-      },
-      {
-        name: 'Game C',
-        id: 'C'
       }
     ];
 
