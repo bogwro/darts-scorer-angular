@@ -17,6 +17,7 @@ block content
                   .username {{user.name}}
                   button.btn.btn-danger-outline(type='button', ng-click='matchVM.removeUser(user)')
                     include ./backspace.svg
+          .no-users(ng-if='!matchVM.users.length') ADD PLAYERS
         .formHolder
           form.form-inline(name='newUserForm', novalidate='', autocomplete='off')
             .form-group
