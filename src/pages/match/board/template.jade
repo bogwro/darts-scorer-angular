@@ -3,7 +3,10 @@ extends ../../../common/templates/base
 block content
   .contentMatch
     .infoHolderWinner(ng-if="boardVM.game.currentPlayer.winner")
-      p WINNER </br> agachjhfdjkshf
+      p WINNER </br> {{boardVM.playerName}}
+      .actions
+        button(ui-sref='match.table') OK
+        button(ng-click='boardVM.undo()') UNDO
     .left
       .rowContent.playerName {{boardVM.playerName}}
       .rowContent.pointsSet
