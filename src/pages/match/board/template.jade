@@ -4,9 +4,11 @@ block content
   .contentMatch
     .infoHolderWinner(ng-if="boardVM.game.currentPlayer.winner")
       p WINNER </br> {{boardVM.playerName}}
-      .actions
-        button(ui-sref='match.table') OK
-        button(ng-click='boardVM.undo()') UNDO
+      .buttonSet
+        button.btn(ui-sref='match.table')
+          include ./list.svg
+        button.btn.btn-undo(ng-click='boardVM.undo()')
+          include ./undo.svg
     .left
       .rowContent.playerName {{boardVM.playerName}}
       .rowContent.pointsSet
