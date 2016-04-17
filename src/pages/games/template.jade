@@ -12,4 +12,7 @@ block content
       button.list-group-item(ng-click='gamesCtrl.playGame(game)', ng-repeat='game in gamesCtrl.games')
         h4.list-group-item-heading {{game.name}}
         p.list-group-item-text
-          | Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+          | Each player starts with a score of 501 and takes turns to throw 3 darts.
+          | The score for each turn is calculated and deducted from the players total.
+          //| Bullseye scores 50, the outer ring scores 25 and a dart in the double or treble ring counts double or treble the segment score.
+          | The objective is to be the first player to reduce the score to exactly zero, the only caveat being that the last dart thrown must land in a double or the bullseye.

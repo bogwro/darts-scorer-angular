@@ -3,5 +3,24 @@ $txt-red: darken(#B80000, 0%);
 $txt-green: darken(green, 5%);
 $txt-white: darken(white, 30%);
 $txt-black: lighten(black, 10%);
+$txt-disabled: darken(white, 25%);
 
 $off-white: darken(whitesmoke, 10%);
+
+
+////////////////////
+$bg-theme-1: #1a1a1a;
+$bg-theme-1-icon: rgba(#fff, .05);
+
+$bg-theme-1-input: lighten($bg-theme-1, 6%);
+$bg-theme-1-input-border: rgba(#fff, .3);
+
+$bg-theme-1-active: lighten(green, 0%);
+$txt-theme-1-active: darken(whitesmoke, 10%);
+$theme-1-green: lighten(green, 5%);
+$theme-1-txt-disabled: lighten(black, 35%);
+
+////////////////////
+$bg-theme-2: darken(whitesmoke, 10%);
+$bg-theme-2-icon: rgba(#000, .05);
+$txt-theme-2-active: lighten(green, 5%);

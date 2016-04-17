@@ -1,6 +1,9 @@
 @import "../../../styles/mixins";
 
-
+input {
+  outline: 0 !important;
+  -webkit-appearance:none;
+}
 .contentSettings {
   @include flex(1);
   @include display(flex);
@@ -26,13 +29,65 @@ h1 {
   @include flex-wrap(nowrap);
 
   .leftPlayers {
-    background-color: $off-white;
+    background-color: $bg-theme-2;
     @include flex(1);
     @include display(flex);
     @include flex-direction(column);
     @include flex-wrap(nowrap);
 
+    h2 {
+      color: $txt-black;
+      z-index: 100;
+      text-shadow: none;
+    }
+    .no-users {
+      z-index: 100;
+      text-shadow: none;
+      font-weight: bold;
+      position: absolute;
+      bottom: 50px;
+      @include calc(left, "50% - 75px");
+      span {
+        display: block;
+        border: 1px solid $txt-black;
+        padding: 10px 0;
+        width: 150px;
+        text-align: center;
+        background-color: $bg-theme-1;
+        color: $txt-theme-1-active;
+      }
+
+      svg {
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        @include calc(left, "50% - 15px");
+        bottom: -25px;
+        g g {
+          fill: $bg-theme-1;
+        }
+      }
+    }
+    ////// bounce effect
+
+    .bounce {
+      position: absolute;
+      animation: bounce 2s infinite;
+      @include animation(bounce 2s ease-in-out infinite);
+
+    }
+    @include keyframes(bounce) {
+      0%, 100% {
+        @include transform(translateY(0));
+      }
+      50% {
+        @include transform(translateY(25px));
+      }
+    }
+
+    //////////////////////
     .listHolder {
+      z-index: 100;
       @include flex(1);
       position: relative;
       .bg-players {
@@ -42,19 +97,20 @@ h1 {
         @include justify-content(flex-bottom);
         width: 100%;
         bottom: 0;
+        z-index: 1;
         svg {
           width: 100%;
           height: 100%;
         }
         svg g g{
-          fill: rgba(#000, .05);
+          fill: $bg-theme-2-icon;
         }
       }
     }
     .formHolder {
       padding: 20px;
       box-sizing: border-box;
-      background-color: #1a1a1a;
+      background-color: $bg-theme-1;
       height: 100px;
     }
 
@@ -64,26 +120,67 @@ h1 {
     @include display(flex);
     @include flex-direction(column);
     @include flex-wrap(nowrap);
-    background-color: #1a1a1a;
+    background-color: $bg-theme-1;
 
     .listHolder {
       @include flex(1);
       position: relative;
+      @include display(flex);
+      @include flex-direction(column);
+      @include justify-content(center);
+      overflow: hidden;
+
       .bg-settings {
         position: absolute;
         width: 100%;
         height: 90%;
         bottom: -10%;
         right: -20%;
+        z-index: 1;
         svg {
           width: 100%;
           height: 100%;
         }
         svg g g{
-          fill: rgba(#fff, .05);
+          fill: $bg-theme-1-icon;
         }
       }
+      form {
+        z-index: 100;
+      }
+      .form-group {
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(center);
 
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          width: 90%;
+          li {
+            width: 100%;
+            padding: 10px 0;
+            @include display(flex);
+            @include flex-direction(row);
+            @include justify-content(center);
+
+            input.form-control {
+              text-align: center;
+              padding: 5px 0;
+              border: none;
+              background-color: $bg-theme-1-input;
+              border-bottom: 2px solid $bg-theme-1-input-border;
+            }
+            span {
+              line-height: 26px;
+              margin-right: 10px;
+              width: 100px;
+              text-align: right;
+            }
+          }
+        }
+      }
     }
     .formHolder {
       position: relative;
@@ -92,12 +189,90 @@ h1 {
       box-sizing: border-box;
       background-color: $off-white;
     }
+//////// slide button
+    input[type=checkbox] {
+      visibility: hidden;
+    }
+    .slide-button {
+      width: 80px;
+      height: 24px;
+      background: $bg-theme-1-input;
+
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      border-radius: 50px;
+      position: relative;
+
+      -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+      -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+      box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    }
+
+    .slide-button:after {
+      content: 'OFF';
+      color: $theme-1-txt-disabled;
+      line-height: 26px;
+      position: absolute;
+      right: 9px;
+      z-index: 0;
+      font-weight: bold;
+    }
+
+    .slide-button:before {
+      content: 'ON';
+      color: $theme-1-green;
+      line-height: 26px;
+      position: absolute;
+      left: 9px;
+      z-index: 0;
+      font-weight: bold;
+    }
+
+    .slide-button label {
+      display: block;
+      width: 34px;
+      height: 20px;
+
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      border-radius: 50px;
+
+      -webkit-transition: all .4s ease;
+      -moz-transition: all .4s ease;
+      -o-transition: all .4s ease;
+      -ms-transition: all .4s ease;
+      transition: all .4s ease;
+      cursor: pointer;
+      position: absolute;
+      top: 3px;
+      left: 2px;
+      z-index: 1;
+
+      -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+      -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+      background: #fcfff4;
+
+      background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+    }
+
+    .slide-button input[type=checkbox]:checked + label {
+      left: 43px;
+    }
+
+
+
 
     ///btn start
     button {
       outline: 0 !important;
       -webkit-appearance:none;
-      background-color: $off-white;
+      background-color: $bg-theme-2;
       border: none;
       width: 100%;
       height: 100%;
@@ -107,12 +282,21 @@ h1 {
       position: absolute;
       top:0;
       left: 0;
-      color: lighten(#000000, 70%);
+      color: $txt-disabled;
       letter-spacing: 5px;
 
-      &:hover {
-        background-color: $txt-green;
-        color: #fff;
+
+      &.disabled {
+        background-color: $bg-theme-2;
+        color: $txt-disabled;
+      }
+      &.btn-primary {
+        color: $txt-black;
+
+        &:hover {
+          background-color: $bg-theme-1-active;
+          color: $txt-theme-1-active;
+        }
       }
     }
 
@@ -154,9 +338,9 @@ h1 {
         box-sizing: border-box;
         line-height: 40px;
         text-indent: 20px;
-        background-color: lighten(#171717, 10%);
+        background-color: $bg-theme-1-input;
         border: none;
-        border-bottom: 2px solid rgba(#fff, .3);
+        border-bottom: 2px solid $bg-theme-1-input-border;
         color: $off-white;
         font-size: 2rem;
         font-weight: 200;
@@ -166,7 +350,7 @@ h1 {
     button {
       outline: 0 !important;
       -webkit-appearance:none;
-      background-color: lighten(#171717, 10%);
+      background-color: $bg-theme-1-input;
       color: $off-white;
       border: none;
       width: 10%;
@@ -178,25 +362,32 @@ h1 {
       margin-top: 0;
 
       &:hover {
-        background-color: $txt-green;
+        background-color: $bg-theme-1-active;
       }
     }
   }
 
 
-  //////////////////////
+  //////////////////////  players list
+
   ul.list-group {
-    @include calc(width, "100% - 40px");
-    padding: 0;
+    position: absolute;
+    top:30px;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 100;
+    width: 100%;
     box-sizing: border-box;
-    margin: 20px;
+    padding: 20px;
     list-style: none;
 
     li {
       padding: 0;
       margin: 0 0 3px 0;
       line-height: 30px;
-      color: #1a1a1a;
+      color: $txt-black;
       text-shadow: none;
       font-weight: bold;
       border-bottom: 1px solid darken($off-white, 10%);
@@ -220,12 +411,12 @@ h1 {
         svg {
           width: 40% !important;
           g g {
-            fill: darken(#fff, 30%) !important;
+            fill: $txt-white !important;
           }
         }
 
         &:hover svg g g{
-          fill: darken(#000, 10%) !important;
+          fill: $bg-theme-1 !important;
         }
       }
       .number {
@@ -253,7 +444,7 @@ h1 {
           height: 100%;
         }
         &:hover svg g g{
-          fill: darken(red, 10%) !important;
+          fill: $txt-red !important;
         }
       }
     }

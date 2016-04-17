@@ -8,6 +8,7 @@ block content
         .listHolder
           .bg-players
             include ./players-bg.svg
+          h2 Players
           ul.list-group(dnd-list='matchVM.users')
             li.list-group-item(ng-repeat='user in matchVM.users' dnd-draggable='user', dnd-moved='matchVM.users.splice($index, 1)', dnd-effect-allowed='move')
               dnd-nodrag
@@ -17,7 +18,9 @@ block content
                   .username {{user.name}}
                   button.btn.btn-danger-outline(type='button', ng-click='matchVM.removeUser(user)')
                     include ./backspace.svg
-          .no-users(ng-if='!matchVM.users.length') ADD PLAYERS
+          .no-users.bounce(ng-if='!matchVM.users.length')
+            span ADD PLAYERS
+            include ./addPlayers.svg
         .formHolder
           form.form-inline(name='newUserForm', novalidate='', autocomplete='off')
             .form-group
@@ -31,13 +34,22 @@ block content
         .listHolder
           .bg-settings
             include ./settings-bg.svg
+
           form(name='gameSettingsForm', novalidate='', autocomplete='off')
             .form-group
-              input.form-control(type='number', placeholder='201 (or more)', required='', name='points', ng-model='matchVM.gameOptions.startingPoints', min='201', step='1')
-              label(for='doubleIn') Double-In
-              input.form-control(type='checkbox', id='doubleIn', name='doubleIn', ng-model='matchVM.gameOptions.doubleIn')
-              label(for='doubleOut') Double-Out
-              input.form-control(type='checkbox', id='doubleOut', name='doubleOut', ng-model='matchVM.gameOptions.doubleOut')
+              ul
+                li
+                  input.form-control(type='number', placeholder='201 (or more)', required='', name='points', ng-model='matchVM.gameOptions.startingPoints', min='201', step='1')
+                li
+                  span Double-In
+                  .slide-button
+                    input.form-control(type='checkbox', id='doubleIn', name='doubleIn', ng-model='matchVM.gameOptions.doubleIn')
+                    label(for='doubleIn')
+                li
+                  span Double-Out
+                  .slide-button
+                    input.form-control(type='checkbox', id='doubleOut', name='doubleOut', ng-model='matchVM.gameOptions.doubleOut')
+                    label(for='doubleOut')
         .formHolder
           button.btn(type='button', ng-click='matchVM.users.length && gameSettingsForm.$valid && matchVM.start()', ng-class='{disabled: !matchVM.users.length || !newUserForm.$valid, "btn-primary": matchVM.users.length}') START
 
