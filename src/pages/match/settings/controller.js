@@ -20,6 +20,12 @@ class MatchSettingsCtrl {
       name: ''
     };
 
+    this.gameOptions = {
+      startingPoints: 501,
+      doubleIn: false,
+      doubleOut: true
+    };
+
     this.game = $state.params.game;
 
     if(!this.game) {
@@ -53,7 +59,7 @@ class MatchSettingsCtrl {
     for(let user of this.users) {
       this.match.createPlayer(user);
     }
-    this.match.start(this.game.name);
+    this.match.start(this.game.name, this.gameOptions);
     this.$log.log(this.match);
     this.$state.go('match.board');
   }
