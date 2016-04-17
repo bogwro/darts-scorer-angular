@@ -19,6 +19,7 @@ class MatchTableCtrl {
 
     if(!this.game) {
       this.$state.go('games');
+      return this;
     }
 
     this.tableData = this.getData();

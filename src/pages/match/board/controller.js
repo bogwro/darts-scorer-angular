@@ -19,10 +19,9 @@ class BoardCtrl {
 
     this.highlightedFields = [];
 
-    window.game = this.game;
-
     if(!this.game) {
       this.$state.go('games');
+      return this;
     }
 
     this.onBoardClickHandle = null;
@@ -30,6 +29,10 @@ class BoardCtrl {
     this.$log.log(`${ctrlName} called.`);
 
     this.registerOnBoardClickListener();
+
+    $scope.$on('destroy', () => {
+      this.removeOnBoardClickListener();
+    });
 
   }
 
@@ -100,25 +103,14 @@ class BoardCtrl {
     let hints = this.game.getCheckoutHint(this.game.currentPlayerTotalPoints, this.throwsLeft);
     let retVal = [];
 
-    if (hints.length) {
+    this.highlightedFields.length = 0;
+
+    if (hints.length && this.throwsLeft) {
       retVal = hints[0];
-      this.highlightField(retVal[0].toString());
-    } else {
-      this.clearFieldHighlighting();
+      this.highlightedFields.push(retVal[0].toString());
     }
 
     return retVal;
-  }
-
-  highlightField(field) {
-    if (this.highlightedFields.indexOf(field) < 0) {
-      this.highlightedFields.push(field);
-      this.$rootScope.$emit('darts.board.register.highlighting', this.highlightedFields);
-    }
-  }
-
-  clearFieldHighlighting() {
-    this.highlightedFields.length = 0;
   }
 
 }

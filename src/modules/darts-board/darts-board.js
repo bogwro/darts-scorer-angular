@@ -72,7 +72,7 @@ angular
           return;
         }
 
-        _.difference(fields, oldFields).forEach((field) => removeHighlight(field));
+        _.difference(oldFields, fields).forEach((field) => removeHighlight(field));
 
         fields.forEach((field) => highlight(field));
 
@@ -94,9 +94,9 @@ angular
         let str = 'db_';
 
         if (field === 'SB') {
-          ids.push(`${str}_25_single`);
+          ids.push(`${str}25_single`);
         } else if (field === 'DB') {
-          ids.push(`${str}_25_double`);
+          ids.push(`${str}25_double`);
         } else {
           str += matches[2];
           if (matches[1] === 'S') {

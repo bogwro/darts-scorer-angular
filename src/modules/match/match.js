@@ -27,6 +27,10 @@ export class Match {
     this._players.set(user, new DartsCore.Player(user));
   }
 
+  get players() {
+    return this._players;
+  }
+
   get game() {
     return this._game;
   }
