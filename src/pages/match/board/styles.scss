@@ -3,7 +3,7 @@
 
 $red: darken(red, 10%) ;
 $green: darken(green, 5%) ;
-$white: darken(white, 30%) ;
+$white: darken(white, 35%) ;
 $black: lighten(black, 10%) ;
 
 .dart-board {
@@ -25,13 +25,37 @@ $black: lighten(black, 10%) ;
     -ms-user-select: none;
     user-select: none;
   }
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
 
-  svg g g:nth-child(odd) text {
-    fill: rgba(#fff, .7);
+  svg g g g g:nth-child(odd) text:nth-child(6) {
+    fill: white;
   }
-  svg g g:nth-child(even) text {
-    fill: rgba(#fff, .7);
+  svg g g g g:nth-child(odd) text:nth-child(7) {
+    //fill: darken($red, 15%);
+    fill: rgba(white, .8);
   }
+  svg g g g g:nth-child(odd) text:nth-child(8) {
+    //fill: darken($red, 15%);
+    fill: rgba(white, .8);
+  }
+
+
+  svg g g g g:nth-child(even) text:nth-child(6) {
+    fill: white;
+  }
+  svg g g g g:nth-child(even) text:nth-child(7) {
+    //fill: darken($green, 5%);
+    fill: rgba(white, .8);
+  }
+  svg g g g g:nth-child(even) text:nth-child(8) {
+    //fill: darken($green, 5%);
+    fill: rgba(white, .8);
+  }
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
+
+
   // upper background color np:20
   svg g g g g:nth-child(odd) path:nth-child(2) {
     fill: $red;
@@ -78,9 +102,48 @@ $black: lighten(black, 10%) ;
     fill: $red;
   }
 
-  svg g g g g path.highlight,
-  svg g g g g circle.highlight
+
+  ////////////////////////////////////
+
+  svg g g g g:last-child circle:first-child.highlight
   {
-    fill: blue !important;
+    fill: lighten(#005AFD, 30%);
   }
+  svg g g g g:last-child circle:last-child.highlight
+  {
+   fill: lighten(#005AFD, 30%);
+  }
+
+//////
+
+// upper background color np:20
+svg g g g g:nth-child(odd) path:nth-child(2).highlight {
+  fill: lighten(#005AFD, 0%);
+}
+// middle background color np:20
+svg g g g g:nth-child(odd) path:nth-child(3).highlight,
+svg g g g g:nth-child(odd) path:nth-child(5).highlight {
+  fill: lighten(#005AFD, 0%);
+}
+// lower background color np:20
+svg g g g g:nth-child(odd) path:nth-child(4).highlight {
+  fill: lighten(#005AFD, 0%);
+}
+
+
+// upper background color np:1
+svg g g g g:nth-child(even) path:nth-child(2).highlight {
+  fill: lighten(#0054D2, 0%);
+}
+// middle background color np:1
+svg g g g g:nth-child(even) path:nth-child(3).highlight,
+svg g g g g:nth-child(even) path:nth-child(5).highlight {
+  fill: lighten(#0054D2, 0%);
+}
+// lower background color np:1
+svg g g g g:nth-child(even) path:nth-child(4).highlight {
+  fill: lighten(#0054D2, 0%);
+}
+
+
 }

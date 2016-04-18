@@ -3,13 +3,16 @@ extends ../../../common/templates/base
 block content
   .contentMatch
     .infoHolderWinner(ng-if="boardVM.game.currentPlayer.winner")
-      p WINNER </br> {{boardVM.playerName}}
+      p WINNER </br>
+        span.winner-name {{boardVM.playerName}}
       .buttonSet
-        button.btn(ui-sref='match.table')
+        button.btn.btn-list(ui-sref='match.table')
           include ./list.svg
         button.btn.btn-undo(ng-click='boardVM.undo()')
           include ./undo.svg
-        button.btn.btn-undo(ui-sref='match.settings') New Game
+        button.btn.btn-newgame(ui-sref='match.settings') New Game
+
+
     .left
       .rowContent.playerName {{boardVM.playerName}}
       .rowContent.pointsSet
@@ -21,20 +24,23 @@ block content
           span {{boardVM.game.currentRoundPoints}}
       .throws-wrapper
         .throws
-          .throw.bgScore.throwScore(ng-repeat='_throw in boardVM.throws')  {{_throw.number * _throw.multiplier}}
-          .throw.not-done(ng-repeat='i in boardVM.range() track by $index')
-            .bgScore.dart-icon
-              include ./arrow.svg
-            .bgScore.miss-btn(ng-show='$first')
-              button.btn.btn-secondary(ng-click='boardVM.miss()')
-               include ./miss.svg
+          .row-numbers
+            .throw.bgScore.throwScore(ng-repeat='_throw in boardVM.throws') {{_throw.toString()}}
+          .row-score
+            .throw.bgScore.throwScore(ng-repeat='_throw in boardVM.throws')  {{_throw.number * _throw.multiplier}}
+            .throw.not-done(ng-repeat='i in boardVM.range() track by $index')
+              .bgScore.dart-icon
+                include ./arrow.svg
+              .bgScore.miss-btn(ng-show='$first')
+                button.btn.btn-secondary(ng-click='boardVM.miss()')
+                 include ./miss.svg
 
 
       .infoHolder(ng-if="boardVM.checkoutHints.length && boardVM.throwsLeft")
         span {{boardVM.checkoutHints.join('-')}}
 
       .buttonSet
-        button.btn(ui-sref='match.table')
+        button.btn.btn-list(ui-sref='match.table')
           include ./list.svg
         button.btn(ng-if="!boardVM.game.currentPlayer.winner" ng-click='boardVM.nextPlayer()', ng-class='{disabled: !boardVM.game.currentRound.isDone || boardVM.game.currentPlayer.winner, "btn-primary": boardVM.game.currentRound.isDone}')
           include ./player.svg

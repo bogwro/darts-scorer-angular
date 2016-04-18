@@ -9,6 +9,7 @@
   @include align-items(flex-start);
   @include justify-content(flex-start);
   box-sizing: border-box;
+  background-color: darken($colorLeft, 5%) ;
 }
 h1 {
   position: relative;
@@ -26,11 +27,11 @@ h1 {
     height: 100%;
     width: 100%;
     g g {
-      fill: rgba(#000, .9);
+      fill: rgba(#fff, .8);
     }
   }
   &:hover svg g g {
-    fill: rgba(#fff, .9);
+    fill: rgba(#fff, 1);
   }
 }
 .table-wrapper {
@@ -44,12 +45,14 @@ h1 {
   padding: 5px;
 }
 .player-table {
- background-color: lighten($txt-black, 0%);
+  background-color: $colorLeft;
   height: 150px;
   width: 200px;
   box-sizing: content-box;
-  padding: 0px;
+  padding: 0;
   margin: 5px;
+  text-shadow: none;
+  border: 1px solid lighten($colorLeft, 15%);
   @include display(flex);
   @include flex-direction(column);
   @include flex-wrap(wrap);
@@ -60,8 +63,9 @@ h1 {
   padding: 10px 0;
   font-size: 1.8rem;
   width: 100%;
-  background-color: lighten($txt-black, 7%);
+  background-color: $colorLeftIcon;
   color: $off-white;
+  border-bottom: 1px solid darken($colorLeft, 5%);
 }
 .player-settings {
   width: 100%;
@@ -87,7 +91,7 @@ h1 {
   p {
     margin: 0;
     padding: 0;
-    color: darken($off-white, 40%);
+    color: lighten($colorLeft, 30%);
     text-align: left;
   }
   span {
@@ -98,17 +102,18 @@ h1 {
 }
 .total-points {
   width: 100%;
-  border-bottom: 1px solid lighten($txt-black, 2%);
+  border-bottom: 1px solid darken($colorLeft, 5%);
   line-height: 40px;
   text-align: center;
   color: lighten($txt-green, 10%);
   font-size: 1.8rem;
+
 }
 
 .highest-score span {
 
-  color: darken($off-white, 20%);
+  color: lighten($colorLeft, 50%);
 }
 .lowest-score span {
-  color: darken($txt-red, 10%);
+  color: lighten($colorLeft, 50%);
 }

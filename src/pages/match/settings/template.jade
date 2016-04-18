@@ -39,7 +39,12 @@ block content
             .form-group
               ul
                 li
-                  input.form-control(type='number', placeholder='201 (or more)', required='', name='points', ng-model='matchVM.gameOptions.startingPoints', min='201', step='1')
+                  .input-holder
+                    input.form-control(type='number', placeholder='201 (or more)', required='', name='points', ng-model='matchVM.gameOptions.startingPoints', min='201', step='1')
+                    .arrow-up
+                      include ./arrow-up.svg
+                    .arrow-down
+                      include ./arrow-down.svg
                 li
                   span Double-In
                   .slide-button

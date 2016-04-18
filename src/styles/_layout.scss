@@ -1,10 +1,6 @@
 @import "mixins";
 
-$footer: 40px;
-$btnScore:70px;
-$btnAction:70px;
 
-$colorLeft: #2C2C2C;
 /*
  * Globals
  */
@@ -13,7 +9,7 @@ $colorLeft: #2C2C2C;
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: $off-white;
 }
 
 
@@ -29,7 +25,7 @@ html, body {
 }
 body {
   font-size: 1.4rem;
-  color: #fff;
+  color: $off-white;
   text-align: center;
   text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
@@ -93,18 +89,42 @@ body {
   width: 100%;
   background-color: rgba(#000, .8);
   @include display(flex);
+  @include flex-direction(column);
   @include align-items(center);
   @include justify-content(center);
-  font-size: 15vh;
+
   color: whitesmoke;
-  text-shadow: 0 0 10px #000;
+  //text-shadow: 0 0 10px #000;
 
   p {
+    font-size: 15vh;
     margin: 0;
     padding: 5vh 0;
     width: 100%;
     text-align: center;
-    background-color: $txt-red;
+    background-color: darken(whitesmoke, 20%);;
+  }
+  span.winner-name {
+    color: $txt-red;
+    padding-top: 0;
+
+  }
+  .buttonSet {
+    @include justify-content(center);
+    background-color: $bg-theme-1;
+
+    .btn {
+      margin: 20px;
+      background-color: darken($colorLeft, 10%);
+    }
+    .btn-newgame {
+      border-color: $txt-green;
+      color: $txt-green;
+    }
+    .btn-newgame:hover {
+      border-color: lighten($txt-green, 20%);
+      color: lighten($txt-green, 20%);
+    }
   }
 }
 
@@ -145,6 +165,8 @@ body {
   @include flex-direction(row);
   @include flex-wrap(wrap);
   @include justify-content(space-around);
+  box-sizing: border-box;
+  border-right: 1px solid #000000;
 
   .rowContent {
     font-size: 2rem;
@@ -156,11 +178,10 @@ body {
     @include flex-wrap(wrap);
     @include align-items(center);
     @include justify-content(center);
-    //@include align-content(center);
   }
 }
 .playerName {
-  color: #fff;
+  color: $off-white;
   letter-spacing: 1px;
   font-size: 3rem !important;
   font-weight: 300;
@@ -176,7 +197,6 @@ body {
   div {
     @include flex(1);
     p {
-      color: darken($off-white, 45%);
       text-shadow: 1px 1px #000;
       padding: 5px 0 5px 0;
       margin: 0;
@@ -198,7 +218,7 @@ body {
     color: $txt-green;
   }
   .roundPoints span {
-    color: darken(#fff, 20%);
+    color: lighten($colorLeft, 50%);
   }
 }
 .throws-wrapper {
@@ -212,14 +232,22 @@ body {
 .throws {
   @include display(flex);
   @include flex-direction(row);
-  @include flex-wrap(nowrap);
+  @include flex-wrap(wrap);
   @include justify-content(center);
   @include align-content(stretch);
   padding: 5px;
   padding-bottom: 100px;
 
-  .throw {
+  .row-numbers, .row-score {
+    width: 100%;
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+    @include align-content(stretch);
+  }
 
+  .throw {
     position: relative;
 
     svg {
@@ -232,13 +260,16 @@ body {
     }
   }
   .bgScore {
-    background: #171717;
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
     height: $btnScore;
     width: $btnScore;
-    border: 1px solid rgba(#fff, .2);
+    border: 1px solid lighten($colorLeft, 10%);
+
+    svg path {
+      fill: $colorLeftIcon;
+    }
   }
 
   .btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
@@ -246,6 +277,7 @@ body {
     -webkit-appearance:none;
     text-shadow: none; /* Prevent inheritance from `body` */
     background-color: transparent;
+    border-radius: 5px;
     border: none;
     padding: 0;
     margin: 0;
@@ -258,7 +290,19 @@ body {
   .throwScore {
     line-height: $btnScore;
     font-size: 4rem;
-    color: #999;
+  }
+  .row-numbers  {
+    .bgScore {
+      margin: 0 5px;
+      padding: 2px 5px;
+      width: $btnScore;
+      @include calc(height, "#{$btnScore} /3");
+
+    }
+    .throwScore {
+      @include calc(line-height, "#{$btnScore} /3");
+      font-size: 2rem;
+    }
   }
 }
 
@@ -272,7 +316,7 @@ body {
   @include justify-content(center);
   width: 100%;
   font-size: 2rem;
-  color: darken(whitesmoke, 10%);
+  color: lighten($colorLeft, 70%);
   margin-top: 1px;
 
   p {
@@ -293,10 +337,8 @@ body {
   @include flex-wrap(nowrap);
   @include justify-content(space-around);
   @include align-items(center);
-  //@include align-content(stretch);
 
   .btn {
-    background-color: #171717;
     display: block;
     outline: 0 !important;
     -webkit-appearance:none;
@@ -304,33 +346,63 @@ body {
     width: $btnAction;
     height: $btnAction;
     border-radius: 200px;
-    border: 1px solid rgba(#fff, .2);
-    svg{
+    border: 2px solid $colorLeftIcon;
+    svg {
       width: 70%;
       height: 70%;
+      path {
+        fill: $colorLeftIcon;
+      }
     }
   }
   .btn.btn-primary {
-    background-color: lighten(#171717, 0%);
-    border: 2px solid green;
-    color: #222;
+    border-color: $txt-green;
     outline: none;
+    svg path {
+      fill: $txt-green;
+    }
+    &:hover {
+      border-color: lighten($txt-green, 20%);
+      svg path {
+        fill: lighten($txt-green, 20%);
+      }
+    }
+  }
+  .btn-undo {
+    border-color: $txt-red;
     svg path{
-      fill: green;
+      fill: $txt-red;
     }
   }
   .btn-undo:hover {
+    border-color: lighten($txt-red, 20%);
+    svg path{
+      fill: lighten($txt-red, 20%);
+    }
+  }
+  .btn-undo.disabled,.btn-undo.disabled:hover {
+    border-color: $colorLeftIcon;
    svg path{
-     fill: darken(red, 10%);
+     fill: $colorLeftIcon;
    }
  }
-  .btn-undo:active {
+  .btn-list {
+    border-color: lighten($colorLeftIcon, 20%);;
+    padding-top: 5px;
     svg path{
-      fill: lighten(red, 10%);
+      fill: lighten($colorLeftIcon, 20%);;
+    }
+  }
+  .btn-list:hover {
+    border-color: lighten($colorLeftIcon, 50%);
+    svg path{
+      fill: lighten($colorLeftIcon, 50%);
     }
   }
 
 }
+
+
 .left {
   .playerName {background-color: darken($colorLeft, 4%);}
   .pointsSet {  background-color: darken($colorLeft, 0%);}
@@ -338,6 +410,34 @@ body {
   .throws-wrapper {  background-color: darken($colorLeft, 4%);}
   .infoHolder {  background-color: darken($colorLeft, 8%);}
   .buttonSet {  background-color: darken($colorLeft, 0%);}
+  .bgScore, .btn {  background-color: darken($colorLeft, 6%);}
+
+  .playerName {color: lighten($colorLeft, 70%);}
+  .pointsSet {  color: lighten($colorLeft, 30%);}
+  .totalPoints {color: lighten($colorLeft, 30%);}
+  .row-numbers {  color: lighten($colorLeft, 10%);}
+  .row-score {  color: lighten($colorLeft, 30%);}
 
 
+  .btn-secondary {
+    svg circle {
+      stroke: darken($colorLeftIcon, 11%);
+    }
+    svg circle:first-child {
+      fill: darken($colorLeftIcon, 11%);
+    }
+    svg g g g path {
+      stroke: darken($txt-red, 10%);
+    }
+    svg g g g g:nth-child(2) path {
+      fill: darken($txt-red, 10%);
+      stroke: transparent;
+    }
+    &:hover svg circle {
+      stroke: lighten($colorLeftIcon, 10%);
+    }
+    &:hover svg circle:first-child {
+      fill: lighten($colorLeftIcon, 10%);
+    }
+  }
 }

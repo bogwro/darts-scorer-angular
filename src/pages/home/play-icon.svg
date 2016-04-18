@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" >
+
+    <g stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+
+                <path d="M100,0 C45,0 0,45 0,100 C0,155 45,200 100,200 C155,200 200,155 200,100 C200,45 155,0 100,0 L100,0 Z" fill="#000000"></path>
+                <path d="M80,145 L80,55 L140,100 L80,145 L80,145 Z"  fill="#ff0000"></path>
+
+    </g>
+</svg>

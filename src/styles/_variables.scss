@@ -1,7 +1,7 @@
 
 $txt-red: darken(#B80000, 0%);
 $txt-green: darken(green, 5%);
-$txt-white: darken(white, 30%);
+$txt-white: darken(white, 40%);
 $txt-black: lighten(black, 10%);
 $txt-disabled: darken(white, 25%);
 
@@ -24,3 +24,15 @@ $theme-1-txt-disabled: lighten(black, 35%);
 $bg-theme-2: darken(whitesmoke, 10%);
 $bg-theme-2-icon: rgba(#000, .05);
 $txt-theme-2-active: lighten(green, 5%);
+
+
+//////////////////////////
+//////////////////////////
+//////////////////////////
+
+$footer: 40px;
+$btnScore:70px;
+$btnAction:70px;
+
+$colorLeft: #1c2023;
+$colorLeftIcon: lighten($colorLeft, 10%);

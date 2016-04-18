@@ -1,19 +1,19 @@
 .site-wrapper
   .site-wrapper-inner
     .cover-container
-      .masthead.clearfix
-        .inner
-          h3.masthead-brand DARTS
-      .inner.cover
+      .bg-homepage
+        include ./dartsBoard.svg
+      h3.masthead-brand DARTS
+      .lead
         //p.lead
         //  a.btn.btn-secondary.btn-block(ui-sref='players') players
         //  br
         //p.lead
         //  a.btn.btn-secondary.btn-block(ui-sref='options') options
         //  br
-        p.lead
-          a.btn.btn-primary.btn-block(ui-sref='games') play
-
+        a.btn.btn-primary.btn-block(ui-sref='games')
+          span PLAY
+          include ./play-icon.svg
       .mastfoot
         .inner
           | &copy; #{new Date().getFullYear()}&nbsp; Cre8 New Media Ltd
