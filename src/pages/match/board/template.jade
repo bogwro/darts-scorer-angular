@@ -26,6 +26,7 @@ block content
         .throws
           .row-numbers
             .throw.bgScore.throwScore(ng-repeat='_throw in boardVM.throws') {{_throw.toString()}}
+            .throw.bgScore.throwScore(ng-repeat='i in boardVM.range() track by $index', style='visibility: hidden')
           .row-score
             .throw.bgScore.throwScore(ng-repeat='_throw in boardVM.throws')  {{_throw.number * _throw.multiplier}}
             .throw.not-done(ng-repeat='i in boardVM.range() track by $index')
