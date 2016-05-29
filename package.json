@@ -1,6 +1,6 @@
 {
   "name": "darts-scorer-angular",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Darts Scorer Web App using Angular framework",
   "config": {
     "host": "0.0.0.0",
