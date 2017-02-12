@@ -13,14 +13,14 @@
     "bower": "bower",
     "commit": "git-cz",
     "gulp": "gulp",
-    "prestart": "npm i && bower install",
-    "pretest": "npm i && bower install",
+    "prestart": "yarn install && bower install --allow-root",
+    "pretest": "yarn install && bower install --allow-root",
     "release": "NODE_ENV=production gulp release",
-    "start": "gulp webpack-dev-server",
+    "start": "node-debug gulp webpack-dev-server",
     "test": "gulp test",
-    "upgrade": "npm run upgrade-packages && npm run upgrade-bower-packages",
-    "upgrade-bower-packages": "ncu -a -m bower && bower install",
-    "upgrade-packages": "ncu -a && npm install"
+    "upgrade": "yarn run upgrade-packages && yarn run upgrade-bower-packages",
+    "upgrade-bower-packages": "ncu -a -m bower && bower install --allow-root",
+    "upgrade-packages": "yarn update"
   },
   "contributors": [
     {
@@ -79,6 +79,7 @@
     "karma-webpack": "^1.7.0",
     "minimist": "^1.2.0",
     "mocha": "^2.5.3",
+    "node-inspector": "^0.7.5",
     "node-sass": "^3.7.0",
     "npm-check-updates": "^2.6.5",
     "open": "^0.0.5",
