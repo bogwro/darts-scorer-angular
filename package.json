@@ -16,7 +16,7 @@
     "prestart": "yarn install && bower install --allow-root",
     "pretest": "yarn install && bower install --allow-root",
     "release": "NODE_ENV=production gulp release",
-    "start": "node-debug gulp webpack-dev-server",
+    "start": "gulp webpack-dev-server",
     "test": "gulp test",
     "upgrade": "yarn run upgrade-packages && yarn run upgrade-bower-packages",
     "upgrade-bower-packages": "ncu -a -m bower && bower install --allow-root",
